@@ -6,3 +6,8 @@ html, body, #map {
     height: 100%;
     width: 100vw;
 }
+
+.leaflet-div-icon {
+    background: green;
+    border: 1px solid red;
+}

@@ -30,9 +30,15 @@ fetch("beamlines_data.json").then((result) => result.json()).then((groups) => {
     var overlays = {};
     for (var group of groups) {
         let lg = L.layerGroup();
+        var marker_icon = L.icon({
+            iconUrl: group.marker,
+            iconSize: [25, 41],
+            iconAnchor: [12.5, 41],
+            popupAnchor: [0, -41]
+        });
 
         for (var beamline of group.beamlines) {
-            var marker = L.marker(beamline.position).addTo(lg);
+            var marker = L.marker(beamline.position, {icon: marker_icon}).addTo(lg);
             marker.bindPopup(`<h1><b>${beamline.name}</b></h1>
                 <p>${beamline.description}<p>
                 <a href="${beamline.url}">${beamline.url}</a>`);
