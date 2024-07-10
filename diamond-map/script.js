@@ -37,4 +37,17 @@ fetch("beamlines_data.json").then((result) => result.json()).then((groups) => {
     L.control.layers(null, overlays).addTo(map);
 })
 
+var myIcon = L.icon({
+    iconUrl: 'my-icon.png',
+    iconSize: [50, 50],
+    iconAnchor: [25,50],
+    popupAnchor: [0, -50],
+});
 
+var marker = L.marker([0,0], {icon:myIcon}).addTo(map);
+marker.bindPopup("<b>This is your location</b>")
+map.locate({watch:true, setView:true});
+
+map.on("locationfound", function(e) {
+    marker.setLatLng(e.latlng);
+});
