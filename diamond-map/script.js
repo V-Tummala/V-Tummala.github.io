@@ -16,7 +16,14 @@ L.imageOverlay(imageUrl, imageBounds, {zindex:1}).addTo(map);
 var imageUrl = 'BaseOver.png';
 L.imageOverlay(imageUrl, imageBounds, {zindex:2}).addTo(map);
 
-var marker = L.marker([51.574349, -1.310892]).addTo(map);
+var diamondIcon = L.icon({
+    iconUrl: 'diamond-icon.png',
+    iconSize: [150, 50],
+    iconAnchor: [75,50],
+    popupAnchor: [0, -50],
+});
+
+var marker = L.marker([51.574349, -1.310892], {icon:diamondIcon}).addTo(map);
 marker.bindPopup("<b>Diamond Lightsource</b><br>Syncrotron")
 
 fetch("beamlines_data.json").then((result) => result.json()).then((groups) => {
