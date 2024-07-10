@@ -2,6 +2,7 @@
   {
     "name": "Macromolecular Crystallography",
     "icon": "https://www.diamond.ac.uk/.resources/DiamondLightModule/webresources/img/icons/MXicon.png",
+    "marker": "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
     "beamlines": [
       {
         "name": "I04-1",
@@ -117,6 +118,7 @@
   {
     "name": "Soft Condensed Matter",
     "icon": "https://www.diamond.ac.uk/.resources/DiamondLightModule/webresources/img/icons/SCMIcon.png",
+    "marker": "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-gold.png",
     "beamlines": [
       {
         "name": "I22",
@@ -195,6 +197,7 @@
   {
     "name": "Imaging and Microscopy",
     "icon": "https://www.diamond.ac.uk/.resources/DiamondLightModule/webresources/img/icons/ImagingIcon.png",
+    "marker": "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png",
     "beamlines": [
       {
         "name": "DIAD",
@@ -285,6 +288,7 @@
   {
     "name": "Biological Cryo-Imaging",
     "icon": "https://www.diamond.ac.uk/.resources/DiamondLightModule/webresources/img/icons/BioCryo.png",
+    "marker": "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
     "beamlines": [
       {
         "name": "eBIC",
@@ -328,6 +332,7 @@
   {
     "name": "Magnetic Materials",
     "icon": "https://www.diamond.ac.uk/.resources/DiamondLightModule/webresources/img/icons/Magnetic.png",
+    "marker": "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png",
     "beamlines": [
       {
         "name": "I16",
@@ -406,6 +411,7 @@
   {
     "name": "Structures and Surfaces",
     "icon": "https://www.diamond.ac.uk/.resources/DiamondLightModule/webresources/img/icons/StructuresSurfaces.png",
+    "marker": "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png",
     "beamlines": [
       {
         "name": "I07",
@@ -484,6 +490,7 @@
   {
     "name": "Crystallography",
     "icon": "https://www.diamond.ac.uk/.resources/DiamondLightModule/webresources/img/icons/crystallography.png",
+    "marker": "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png",
     "beamlines": [
       {
         "name": "I11",
@@ -562,6 +569,7 @@
   {
     "name": "Spectroscopy",
     "icon": "https://www.diamond.ac.uk/.resources/DiamondLightModule/webresources/img/icons/Spectroscopy.png",
+    "marker": "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png",
     "beamlines": [
       {
         "name": "I18",
