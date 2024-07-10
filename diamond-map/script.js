@@ -56,3 +56,8 @@ map.on("locationfound", function(e) {
     circle.setRadius(e.accuracy);
     
 });
+
+// map.on('click', function(ev) {
+//     alert(ev.latlng); 
+// });
+
