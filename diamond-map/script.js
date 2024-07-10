@@ -48,7 +48,7 @@ var marker = L.marker([0,0], {icon:myIcon}).addTo(map);
 var circle = L.circle([0,0], {radius: 0}).addTo(map);
 
 marker.bindPopup("<b>This is your location</b>")
-map.locate({watch:true, setView:true});
+map.locate({watch:true});
 
 map.on("locationfound", function(e) {
     marker.setLatLng(e.latlng);
