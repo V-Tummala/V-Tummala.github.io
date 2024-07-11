@@ -1,0 +1,29 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+html, body, #map {
+    height: 100%;
+    width: 100vw;
+}
+
+#map {
+    z-index: 1;
+    position: absolute;
+}
+
+.leaflet-div-icon {
+    background: green;
+    border: 1px solid red;
+}
+
+button {
+    background-color: bisque;
+    border: 100;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1000;
+    padding: 13.4;
+    margin-left: 1300;
+    margin-top: 10;
+}
