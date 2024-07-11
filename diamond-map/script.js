@@ -28,6 +28,7 @@ marker.bindPopup("<b>Diamond Lightsource</b><br>Syncrotron")
 
 fetch("beamlines_data.json").then((result) => result.json()).then((groups) => {
     var overlays = {};
+
     for (var group of groups) {
         let lg = L.layerGroup();
         var marker_icon = L.icon({
@@ -41,7 +42,7 @@ fetch("beamlines_data.json").then((result) => result.json()).then((groups) => {
             var marker = L.marker(beamline.position, {icon: marker_icon}).addTo(lg);
             marker.bindPopup(`<h1><b>${beamline.name}</b></h1>
                 <p>${beamline.description}<p>
-                <a href="${beamline.url}">${beamline.url}</a>`);
+                <a href="${beamline.url}">${beamline.url}</a>`);  
         }
         overlays[group.name] = lg;
         lg.addTo(map);
@@ -70,7 +71,13 @@ map.on("locationfound", function(e) {
     
 });
 
+
 // map.on('click', function(ev) {
 //     alert(ev.latlng); 
 // });
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '<a href="https://www.diamond.ac.uk/Home.html;jsessionid=EF1762AB33F66BB12E1D5432DDAB0976">Diamond Lightsource</a>'
+}).addTo(map);
+
 
