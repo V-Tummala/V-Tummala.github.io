@@ -1,4 +1,5 @@
 var map = L.map('map').setView([51.574349, -1.310892], 17);
+var markers = {};
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 20,
@@ -40,9 +41,10 @@ fetch("beamlines_data.json").then((result) => result.json()).then((groups) => {
 
         for (var beamline of group.beamlines) {
             var marker = L.marker(beamline.position, {icon: marker_icon}).addTo(lg);
+            markers[beamline.name] = marker;
             marker.bindPopup(`<h1><b>${beamline.name}</b></h1>
                 <p>${beamline.description}<p>
-                <a href="${beamline.url}">${beamline.url}</a>`);  
+                <a href="${beamline.url}">${beamline.url}</a>`);
         }
         overlays[group.name] = lg;
         lg.addTo(map);
@@ -80,4 +82,51 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '<a href="https://www.diamond.ac.uk/Home.html;jsessionid=EF1762AB33F66BB12E1D5432DDAB0976">Diamond Lightsource</a>'
 }).addTo(map);
 
+function getNearestMarker() {
+    var nearest = [[,10000000]];
+    map.on("locationfound", function(e) {
+        var userPos = e.latlng;
+        // console.log(userPos);
+        var userLat = userPos["lat"];
+        // console.log(userLat);
+        var userLong = userPos["lng"];
+        // console.log(userLong);
+        fetch("beamlines_data.json").then((result) => result.json()).then((groups) => {
+            for (var group of groups) {
+                for (var beamline of group.beamlines) {
+                    var beamlinePos = beamline.position;
+                    // console.log(beamlinePos);
+                    var beamlineLat = beamlinePos[0];
+                    // console.log(beamlineLat);
+                    var beamlineLong = beamlinePos[1];
+                    // console.log(beamlineLong);
+                    
+                    var latDiff = userLat - beamlineLat;
+                    // console.log(latDiff);
+                    var longDiff = userLong - beamlineLong;
+                    // console.log(longDiff);
+                    var distance = Math.sqrt(Math.pow(latDiff, 2) + Math.pow(longDiff, 2));
+                    // console.log(distance);
+                    
+                    if (distance < nearest[0][1]) {
+                        nearest[0] = [beamline, distance];
+                    };
+                };
+            };
+        })
+        var nearestMarker = markers[nearest[0][0].name];
+        console.log(nearest[0][0].name);
+        var originalPopup = nearestMarker.getPopup().getContent();
+        nearestMarker.setPopupContent("<b>This is the closest beamline<b>");
+        nearestMarker.openPopup();
+        setTimeout(() => {
+            nearestMarker.closePopup();
+            nearestMarker.setPopupContent(originalPopup);
+        }, 5000);
 
+    });
+
+
+}
+
+getNearestMarker();
