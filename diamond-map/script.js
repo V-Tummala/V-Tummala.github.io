@@ -86,10 +86,24 @@ map.on("locationfound", function(e) {
 
 });
 
+var tl = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: ""
+}).addTo(map);
 
-// map.on('click', function(ev) {
-//     alert(ev.latlng); 
-// });
+map.on('mousemove', function(ev) {
+   if (tl != null) {
+    map.removeLayer(tl);
+   }
+   var latitude = ev.latlng.lat
+   var roundedLat = parseFloat(latitude).toFixed(4);
+
+   var longitude = ev.latlng.lng
+   var roundedLong = parseFloat(longitude).toFixed(4);
+
+    tl = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: `${roundedLat}, ${roundedLong}`
+    }).addTo(map);
+});
 
 // Creating a diamond lightsource attribution at the bottom right corner of the screen
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

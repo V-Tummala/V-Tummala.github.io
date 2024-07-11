@@ -17,7 +17,7 @@ html, body, #map {
     border: 1px solid red;
 }
 
-button {
+#button {
     background-color: bisque;
     border: 100;
     border-radius: 10px;
