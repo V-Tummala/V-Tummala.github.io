@@ -51,7 +51,7 @@ fetch("beamlines_data.json").then((result) => result.json()).then((groups) => {
             markers[beamline.name] = marker;
             marker.bindPopup(`<h1><b>${beamline.name}</b></h1>
                 <p>${beamline.description}<p>
-                <a href="${beamline.url}">${beamline.url}</a>`);
+                <a href="${beamline.url}">Find out more</a>`);
         }
         overlays[group.name] = lg;
         lg.addTo(map);
@@ -112,6 +112,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Creating a html button using leaflet's controls
 var closestButton = L.control({position: "topright"});
+
 closestButton.onAdd = function() {
     var buttonContainer = L.DomUtil.create("div");
     buttonContainer.innerHTML = "<button id='nearest_marker'>Find nearest beamline</button>";
@@ -124,17 +125,19 @@ function getNearestMarker() {
     var nearest = "";
     for (const [name, marker] of Object.entries(markers)) {
         var markerLocation = marker.getLatLng();
+       
         var distance = markerLocation.distanceTo(userLocation);
-
+        
         comparisonValue = Number.MAX_SAFE_INTEGER;       
         if (distance < comparisonValue) {
             comparisonValue = distance;
             nearest = name;
+            
         };
     };
 
     var nearestMarker = markers[nearest];
-
+   
     var originalPopup = nearestMarker.getPopup().getContent();
     nearestMarker.setPopupContent("<b>This is the closest beamline<b>");
     nearestMarker.openPopup();
@@ -144,3 +147,4 @@ function getNearestMarker() {
     }, 5000);
 
 }
+getNearestMarker();
